@@ -7,10 +7,11 @@
 {
     LocationController *sharedLocationController;
     JSONHandler *jsonHandler;
-    NSMutableArray *arObjectsArray;
     double currentLatitude;
     double currentLongtitude;
     BOOL running;
+    
+    NSString *deviceID;
     BOOL shareGPS;
 }
 

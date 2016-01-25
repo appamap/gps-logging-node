@@ -4,23 +4,8 @@
 
 @implementation NodeLogger
 
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data  //stubs
+- (void)nodeloggerview:(CDVInvokedUrlCommand*)command
 {
-    //NSLog(@"loading");
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    
-   //NSLog(@"fail");
-}
-
-
-- (void)arcodeview:(CDVInvokedUrlCommand*)command
-{
-    [self addListener];
-    
     NSString* callbackId = [command callbackId];
     NSString* jsonString = [[command arguments] objectAtIndex:0];
     NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
@@ -36,14 +21,10 @@
     
     //GPS Backgrpound logger
     
-    GPSLogger *moviePlayer = [[GPSLogger alloc] init];
-    //[moviePlayer injectARComponents:jsonResult];
-    [moviePlayer setUpLocationListener];
-    
-    
-   
+    GPSLogger *logger = [[GPSLogger alloc] init];
+    [logger injectARComponents:jsonResult];
+    [logger setUpLocationListener];
 }
-
 
 
 @end

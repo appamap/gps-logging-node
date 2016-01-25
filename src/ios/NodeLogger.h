@@ -2,7 +2,6 @@
 #import <UIKit/UIKit.h>
 
 
-
 @interface NodeLogger : CDVPlugin
 
 - (void) nodeloggerview:(CDVInvokedUrlCommand*)command;
