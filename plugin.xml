@@ -25,9 +25,6 @@
 
     <header-file src="src/ios/NodeLogger.h"/>
     <source-file src="src/ios/NodeLogger.m"/>
-    
-    <header-file src="src/ios/Constants.h"/>
-    <source-file src="src/ios/Constants.m"/> 
  
     <header-file src="src/ios/GPSLogger.h"/>
     <source-file src="src/ios/GPSLogger.m"/>
@@ -53,7 +50,6 @@
     </config-file>
 
     <source-file src="src/android/NodeLogger.java" target-dir="src/com/geteventro/plugin/"/>
-    <source-file src="src/android/Constants.java" target-dir="src/com/geteventro/plugin/"/>
     <source-file src="src/android/LocService.java" target-dir="src/com/geteventro/plugin/"/>
     <source-file src="src/android/JSONWriter.java" target-dir="src/com/geteventro/plugin/"/>
     
