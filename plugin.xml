@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.ionicsokolov.arcode"
+        id="com.eventro.nodelogger"
         version="0.1.0">
 
   <name>NodeLogger</name>
@@ -31,10 +31,7 @@
  
     <header-file src="src/ios/JSONHandler.h"/>
     <source-file src="src/ios/JSONHandler.m"/>
-    
-    <header-file src="src/ios/LocationController.h"/>
-    <source-file src="src/ios/LocationController.m"/>
-    
+        
     <header-file src="src/ios/GPSLoggerObj.h"/>
     <source-file src="src/ios/GPSLoggerObj.m"/>
     
