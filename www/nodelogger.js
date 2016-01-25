@@ -1,4 +1,4 @@
-cordova.define("com.ionicsokolov.arcode.arcode", function(require, exports, module) { /*global cordova, module*/
+cordova.define("com.eventro.nodelogger.nodelogger", function(require, exports, module) { /*global cordova, module*/
 
 module.exports = {
     /**
@@ -10,7 +10,7 @@ module.exports = {
      * @param {Float} latitude    Latitude
      * @param {Float} longitude   Longitude
      */
-    arcodeview: function (data, successCallback) {
+    nodeloggerview: function (data, successCallback) {
         if(data.length > 0){
             var sendData = [];
                for (var i=0; i<data.length; i++){
@@ -25,7 +25,7 @@ module.exports = {
                sendData[i].lng = (data[i].longitude||37.702510);
                }
             var senddata = JSON.stringify(sendData);
-            cordova.exec(successCallback, null, "ARcode", "arcodeview", [senddata]);
+            cordova.exec(successCallback, null, "NodeLogger", "nodelogger", [senddata]);
         }
 
     }
