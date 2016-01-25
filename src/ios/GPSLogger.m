@@ -24,7 +24,7 @@
 -(void) setUpLocationListener
 {
     sharedLocationController =[LocationController sharedInstance];
-     sharedLocationController.delegate=self;
+    sharedLocationController.delegate=self;
     [sharedLocationController.locationManager startUpdatingLocation]; //need to recall
     [sharedLocationController.locationManager startUpdatingHeading];
     running=YES;
@@ -43,10 +43,9 @@
 
 - (void)locationUpdate:(CLLocation *)location
 {
-    if((running)&&(shareGPS)) //lock/unlock AWS call
+    if((running)&&(shareGPS)&&(!deviceID.length)) //lock/unlock AWS call
     {
         running=NO;
-        NSString* deviceID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
         currentLatitude = sharedLocationController.locationManager.location.coordinate.latitude;
         currentLongtitude = sharedLocationController.locationManager.location.coordinate.longitude;
         jsonHandler = [[JSONHandler alloc]  init]; //send to server
