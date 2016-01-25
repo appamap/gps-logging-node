@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.ionicsokolov.arcode"
+        version="0.1.0">
+
+  <name>ARcode</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/arcode.js" target="js/arcode.js"/>
+
+  <js-module src="www/arcode.js" name="arcode">
+    <clobbers target="ARcode" />
+  </js-module>
+
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/*">
+      <feature name="ARcode">
+        <param name="ios-package" value="ASARcode" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/ASARcode.h"/>
+    <source-file src="src/ios/ASARcode.m"/>
+    
+    <header-file src="src/ios/ARController.h"/>
+    <source-file src="src/ios/ARController.m"/>
+    
+    <header-file src="src/ios/ARObject.h"/>
+    <source-file src="src/ios/ARObject.m"/>
+    
+    <header-file src="src/ios/CaptureSessionManager.h"/>
+    <source-file src="src/ios/CaptureSessionManager.m"/>
+    
+    <header-file src="src/ios/Constants.h"/>
+    <source-file src="src/ios/Constants.m"/> 
+ 
+ <header-file src="src/ios/GPSLogger.h"/>
+ <source-file src="src/ios/GPSLogger.m"/>
+ 
+    <header-file src="src/ios/GradientView.h"/>
+    <source-file src="src/ios/GradientView.m"/>
+    
+    <header-file src="src/ios/JSONHandler.h"/>
+    <source-file src="src/ios/JSONHandler.m"/>
+    
+    <header-file src="src/ios/LocationController.h"/>
+    <source-file src="src/ios/LocationController.m"/>
+    
+    <header-file src="src/ios/PointOverlay.h"/>
+    <source-file src="src/ios/PointOverlay.m"/>
+    
+    <header-file src="src/ios/GPSLoggerObj.h"/>
+    <source-file src="src/ios/GPSLoggerObj.m"/>
+    
+    
+    
+  </platform>
+  
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="ARcode">
+        <param name="android-package" value="com.geteventro.plugin.ARcode"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/ARcode.java" target-dir="src/com/geteventro/plugin/"/>
+     <source-file src="src/android/ARViewSkin.java" target-dir="src/com/geteventro/plugin/"/>
+      <source-file src="src/android/CamFragActivity.java" target-dir="src/com/geteventro/plugin/"/>
+       <source-file src="src/android/CameraFrag.java" target-dir="src/com/geteventro/plugin/"/>
+        <source-file src="src/android/CameraSurfaceHolder.java" target-dir="src/com/geteventro/plugin/"/>
+         <source-file src="src/android/Constants.java" target-dir="src/com/geteventro/plugin/"/>
+          <source-file src="src/android/MapCord.java" target-dir="src/com/geteventro/plugin/"/>
+           <source-file src="src/android/ObjMapData.java" target-dir="src/com/geteventro/plugin/"/>
+            <source-file src="src/android/andorid_ar_plugin_notes.txt" target-dir="src/com/geteventro/plugin/"/>
+  </platform>
+
+</plugin>
