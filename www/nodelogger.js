@@ -1,5 +1,3 @@
-
-cordova.define("com.eventro.nodelogger.nodelogger", function(require, exports, module) { /*global cordova, module*/
                
                module.exports = {
                /**
@@ -25,4 +23,4 @@ cordova.define("com.eventro.nodelogger.nodelogger", function(require, exports, m
                }
                };
                
-               });
+              
