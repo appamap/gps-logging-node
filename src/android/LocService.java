@@ -17,6 +17,8 @@ public class LocService extends Service implements Constants
     private LocationManager mLocationManager = null;
     private static final int LOCATION_INTERVAL = 1000;
     private static final float LOCATION_DISTANCE = 10f;
+    private String deviceID;
+    private String setting;
 
     private class LocationListener implements android.location.LocationListener{
         Location mLastLocation;
@@ -29,7 +31,7 @@ public class LocService extends Service implements Constants
         public void onLocationChanged(Location location)
         {
             Log.e(TAG, "onLocationChanged: " + location);
-            JSONWriter.serverGPSLoggerObj("12345", String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
+            JSONWriter.serverGPSLoggerObj(deviceID, String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
             mLastLocation.set(location);
         }
         @Override
@@ -57,18 +59,30 @@ public class LocService extends Service implements Constants
     {
         return null;
     }
+
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
+        if (intent !=null && intent.getExtras()!=null)
+        {
+            deviceID = intent.getExtras().getString("deviceID");
+            setting = intent.getExtras().getString("setting");
+        }
+
         Log.e(TAG, "onStartCommand");
         super.onStartCommand(intent, flags, startId);
         return START_STICKY;  //bootup
     }
+
+
+
     @Override
     public void onCreate()
     {
         Log.e(TAG, "onCreate");
         initializeLocationManager();
+
 
         try {
             mLocationManager.requestLocationUpdates(
