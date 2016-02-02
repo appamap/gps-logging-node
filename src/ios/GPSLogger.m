@@ -43,7 +43,7 @@
 
 - (void)locationUpdate:(CLLocation *)location
 {
-    if((running)&&(shareGPS)&&(!deviceID.length)) //lock/unlock AWS call
+    if((running)&&(shareGPS)) //lock/unlock AWS call
     {
         running=NO;
         currentLatitude = sharedLocationController.locationManager.location.coordinate.latitude;
@@ -57,8 +57,8 @@
 {
     for (id obj in objArray)
     {
-        shareGPS= [[obj valueForKeyPath: @"setting.enableShareGps"] boolValue];
-        deviceID= [[obj valueForKey: @"deviceID"] stringValue];
+        shareGPS= [[obj valueForKey: @"setting"] boolValue];
+        deviceID= [obj valueForKey: @"deviceID"];
     }
 }
 
