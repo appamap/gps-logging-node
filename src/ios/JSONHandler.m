@@ -9,9 +9,8 @@
 
 -(void) serverGPSLoggerObj :(NSString *) deviceIDParm :(NSString *) latParm :(NSString *) lngParm{
     
-    [self sendPostToServer : [NSString stringWithFormat:@"{\"lat\": %@, \"lng\": %@, \"deviceid\": \"%@\"}", latParm, lngParm, deviceIDParm ]];
+    [self sendPostToServer : [NSString stringWithFormat:@"{\"lat\": \"%@\", \"lng\": \"%@\", \"deviceid\": \"%@\"}", latParm, lngParm, deviceIDParm ]];
 }
-
 
 
 -(void) sendPostToServer :(NSString *)jsonStr
