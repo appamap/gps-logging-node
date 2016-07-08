@@ -20,7 +20,7 @@
                var senddata = JSON.stringify(sendData);
                cordova.exec(successCallback, null, "NodeLogger", "nodeloggerview", [senddata]);
                }
-               }
+               };
 
                gpsloc: function(data, successCallback) {
                if (data.length > 0) {
