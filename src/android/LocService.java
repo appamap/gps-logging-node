@@ -3,6 +3,7 @@ package com.geteventro.plugin;  //liam
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -10,6 +11,10 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+
+//import android.os.Vibrator;
+
+
 
 public class LocService extends Service implements Constants
 {
@@ -30,8 +35,15 @@ public class LocService extends Service implements Constants
         @Override
         public void onLocationChanged(Location location)
         {
+            //Vibrator v = (Vibrator) getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+            //v.vibrate(500);
+
+            SharedPreferences settings = getApplicationContext().getSharedPreferences("loc_data", 0);
+            String local_device_id = settings.getString("deviceID", "");
+            String local_setting = settings.getString("setting", "");
+
             Log.e(TAG, "onLocationChanged: " + location);
-            JSONWriter.serverGPSLoggerObj(deviceID, String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
+            JSONWriter.serverGPSLoggerObj(local_device_id, String.valueOf(location.getLatitude()), String.valueOf(location.getLongitude()));
             mLastLocation.set(location);
         }
         @Override
@@ -68,6 +80,12 @@ public class LocService extends Service implements Constants
         {
             deviceID = intent.getExtras().getString("deviceID");
             setting = intent.getExtras().getString("setting");
+
+            SharedPreferences settings = getApplicationContext().getSharedPreferences("loc_data", 0);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("deviceID", deviceID);
+            editor.putString("setting", setting);
+            editor.apply();
         }
 
         Log.e(TAG, "onStartCommand");
